@@ -20,13 +20,17 @@ export const boardSlice = createSlice({
         },
         incPos: (state) => {
             state.pos++;
+        },
+        decPos: (state) => {
+            state.pos--;
         }
     }
 });
 
 export const {
     setBoard,
-    incPos
+    incPos,
+    decPos
 } = boardSlice.actions;
 
 export default boardSlice.reducer;
