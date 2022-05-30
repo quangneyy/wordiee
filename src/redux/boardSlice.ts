@@ -7,7 +7,8 @@ const initialState = {
     "", "", "", "", "",
     "", "", "", "", "",
     "", "", "", "", "",
-    "", "", "", "", ""]
+    "", "", "", "", ""],
+    pos: 0
 }
 
 export const boardSlice = createSlice({
@@ -16,12 +17,16 @@ export const boardSlice = createSlice({
     reducers: {
         setBoard: (state, action) => {
             state.board = action.payload;
+        },
+        incPos: (state) => {
+            state.pos++;
         }
     }
 });
 
 export const {
-    setBoard
+    setBoard,
+    incPos
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

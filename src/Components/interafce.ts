@@ -1,5 +1,6 @@
 interface boardState {
-    board: string[]
+    board: string[],
+    pos: number,
 }
 
 export interface rootState {
