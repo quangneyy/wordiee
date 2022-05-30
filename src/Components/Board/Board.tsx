@@ -1,4 +1,5 @@
 import React from 'react'
+import KeyBoard from '../Keyboard/KeyBoard';
 import Square from '../Square/Square';
 import './board.css';
 
@@ -18,6 +19,9 @@ const Board: React.FC<IProps> = (props) => {
                     </>
                 )
             })}
+        </div>
+        <div className="keyboard">
+            <KeyBoard />
         </div>
         </>
     )
