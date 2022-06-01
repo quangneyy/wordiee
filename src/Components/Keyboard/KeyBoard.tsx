@@ -3,7 +3,7 @@ import Key from '../Key/Key';
 import { useSelector, useDispatch } from 'react-redux';
 import './keyboard.css';
 import { rootState } from '../interafce';
-import { decPos, setBoard } from '../../redux/boardSlice';
+import { decPos, incRow, setBoard } from '../../redux/boardSlice';
 
 const KeyBoard: React.FC = () => {
     const position = useSelector((state:rootState) => state.board.pos);
@@ -17,13 +17,18 @@ const KeyBoard: React.FC = () => {
         dispatch(decPos());
         dispatch(setBoard(newBoard));
     }
+    const clickEnter = () => {
+        if (position % 5 === 0 && position != 0) {
+            dispatch(incRow());
+        }
+    }
     return (
         <div className="keyboard-container">
             {rows.map((row, idx) => {
                 return (
                     <div className="row">
                         {idx === 2 && (
-                            <span className="letter-row">
+                            <span className="letter-row" onClick={clickEnter}>
                                 Enter
                             </span>
                         )}
