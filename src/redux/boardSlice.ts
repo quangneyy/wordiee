@@ -11,7 +11,7 @@ const initialState = {
     "", "", "", "", ""],
     pos: 0,
     row: 0,
-    correctWord: wordList.words[randomNum]
+    correctWord: wordList.words[randomNum].toUpperCase()
 }
 
 export const boardSlice = createSlice({
