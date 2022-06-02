@@ -58,9 +58,11 @@ const Square: React.FC<IProps> = (props) => {
         };
     }, [val]);
 
+    const status: any = Math.floor(squareIdx/5) < reduxRow && (correct ? "correct" : almost ? "almost" : wrong ? "wrong" : "");
+
     return (
         <motion.div animate={val ? "filled" : "unfilled"} variants={variants}>
-            <div className="square">
+            <div className="square" id={status}>
                 {val}
             </div>
         </motion.div>
