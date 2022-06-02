@@ -9,6 +9,7 @@ const KeyBoard: React.FC = () => {
     const position = useSelector((state:rootState) => state.board.pos);
     const board = useSelector((state:rootState) => state.board.board);
     const row = useSelector((state:rootState) => state.board.row);
+    const correctWord = useSelector((state:rootState) => state.board.correctWord);
     const dispatch = useDispatch();
     const rows: string[] = ['q w e r t y u i o p', 'a s d f g h j k l', 'z x c v b n m'];
     const clickBack = () => {
