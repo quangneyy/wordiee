@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { incPos, setBoard } from '../../redux/boardSlice';
-import { rootState } from '../interafce';
+import { rootState } from '../interface';
 import './key.css';
 
 interface IProps {

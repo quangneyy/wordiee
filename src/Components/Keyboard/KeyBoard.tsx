@@ -2,7 +2,7 @@ import React from 'react'
 import Key from '../Key/Key';
 import { useSelector, useDispatch } from 'react-redux';
 import './keyboard.css';
-import { rootState } from '../interafce';
+import { rootState } from '../interface';
 import { decPos, incRow, setBoard } from '../../redux/boardSlice';
 
 const KeyBoard: React.FC = () => {

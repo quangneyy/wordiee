@@ -10,7 +10,7 @@ const initialState = {
     "", "", "", "", ""],
     pos: 0,
     row: 0,
-    key: ""
+    correctWord: "CONES"
 }
 
 export const boardSlice = createSlice({
@@ -29,9 +29,6 @@ export const boardSlice = createSlice({
         incRow:(state) => {
             state.row++;
         },
-        setKey: (state, action) => {
-            state.key = action.payload;
-        }
     }
 });
 
@@ -40,7 +37,6 @@ export const {
     incPos,
     decPos,
     incRow,
-    setKey
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './square.css'
 import { motion } from 'framer-motion'
+import { useSelector } from 'react-redux';
+import { rootState } from '../interface';
+import { useEffect } from 'react';
 
 interface IProps {
     val: string,
@@ -8,6 +11,23 @@ interface IProps {
 }
 
 const Square: React.FC<IProps> = (props) => {
+    const { val, squareIdx } = props;
+    // Redux state
+    const correctWord = useSelector((state:rootState) => state.board.correctWord);
+    const position = useSelector((state:rootState) => state.board.pos);
+    const reduxRow = useSelector((state:rootState) => state.board.row);
+    // State
+    const [correct, setCorrect] = useState<boolean>(false);
+    const [almost, setAlmost] = useState<boolean>(false);
+    const [wrong, setWrong] = useState<boolean>(false);
+
+    let wordLastIndex = 4;
+    let currentPos = position === 5 
+        ? wordLastIndex 
+        : position > 5 && position % 5 === 0 
+        ? wordLastIndex 
+        : (position % 5) - 1;
+
     const variants = {
         filled: () => ({
             scale: [1.2,1],
@@ -22,7 +42,22 @@ const Square: React.FC<IProps> = (props) => {
             }
         }),
     }
-    const { val, squareIdx } = props;
+
+    useEffect(() => {
+        if (correctWord[currentPos] === val) {
+            setCorrect(true);
+        } else if (!correct && val != "" && correctWord.includes(val)) {
+            setAlmost(true);
+        } else if (!correct && val !== "" && !correctWord.includes(val)) {
+            setWrong(true);
+        }
+        return () => {
+            setCorrect(false);
+            setAlmost(false);
+            setWrong(false);
+        };
+    }, [val]);
+
     return (
         <motion.div animate={val ? "filled" : "unfilled"} variants={variants}>
             <div className="square">

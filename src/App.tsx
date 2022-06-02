@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import './App.css';
 import Board from './Components/Board/Board';
 import Heading from './Components/Heading/Heading';
-import { rootState } from './Components/interafce'
+import { rootState } from './Components/interface'
 
 function App() {
   const board = useSelector((state:rootState) => state.board.board);
